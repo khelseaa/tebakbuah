@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tebak Nama</title>
+    <link rel="icon" type="image" href="assets/images/HuTao4 - 64x64 .ico">
+
+        <link href="style.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+    rel="stylesheet"
+  />
+     <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    
+    <link href="https://unpkg.com/tailwindcss@1.2.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraftia" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <div class="content-container">
+      <header>
+        <h1 class="header-h1">TEBAK-TEBAKAN</h1>
+        <div class="header-p">
+          <p>NAMA BUAH  v2.0 </p>
+        </div>
+      </header>
+      <div class="wordToGuess-container">
+        <div class="wordToGuess-background">
+          <div id="wordToGuess"></div>
+        </div>
+      </div> 
+      
+      <div class="attempts-container">
+        <div class="attempts-container-hutao">
+          <div class="hutao-container">
+            <img id="hutao" src="assets/images/HuTao11.png" class="img-fluid hutao" alt="HuTao">
+          </div>
+        </div>
+        <div class="attempts-container-attempts">
+          <p>❤ x <span id="attemptsLeft"></span></p>
+        </div>
+      </div>
+      
+      <div class="gameStatus-container">
+    <p id="gameStatus"></p>
+  </div>
+  <div class="letterInput-container">
+    <label for="letterInput">KOLOM INPUT 🡺</label>
+    <input type="text" id="letterInput" />
+    <div class="guess-button">
+      <button id="guessButton" class=" guess-button minecraft-btn mx-auto w-50 text-center text-white truncate  border-2 border-b-4 hover:text-yellow-200" onclick="guessLetter()">TEBAK</button>
+    </div>
+  </div>
+  <div class="refresh-button-container">
+    <button id="refreshButton" class=" refresh-button minecraft-btn mx-auto w-52 text-center text-white truncate p-1 border-2 border-b-4 hover:text-yellow-20" onclick="showResetAlert()">GANTI/ULANG</button>
+  </div>
+  <nav class="navbar">
+    <div class="navbar-content left-content">
+      <!-- Left content goes here -->
+      <!-- <div> -->
+       
+        <!-- <a id=usernameIg href="https://www.instagram.com/khelsii_/" target="_blank"> <img for="usernameIg" src="assets/images/iglogo.png">@khelsii_ (v1.0)(<i>beta</i>)</a> -->
+        <button class="patchButton" onclick="showPopup()">Apa yang baru? <i>klik disini</i></button>
+        <!-- </div> -->
+    </div>
+    <div class="navbar-content right-content">
+<!-- Pill -->
+
+<a id="themeButton"
+  class="theme-button inline-block rounded border border-indigo-600 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+ onclick="darkMode()"
+>
+  Mode Gelap
+</a>
+    </div>
+  </nav>
+</div>
+
+<!-- <div class="welcome-container" id="welcome">
+  <span class="close-btn" onclick="closeWelcomeGate()">✖</span>
+  <h1 class="popup-h1">PILIH BAHASA</h1>
+  <h1><i>CHOOSE YOUR LANGUAGE</i></h1>
+  <button>Bahasa Indonesia</button>
+  <button>English</button>
+</div> -->
+<div class="welcome-container" id="welcome">
+  <!-- <span class="close-btn" onclick="closeWelcomeGate()">✖</span> -->
+  <h1 class="popup-h1">SELAMAT BERMAIN</h1>
+  <br>
+  <button class="resetAlert-btn" onclick="closeWelcomeGate()">LANJUTKAN</button>
+</div>
+
+
+
+<div class="popup-container" id="popup">
+  <span class="close-btn" onclick="closePopup()">✖</span>
+  <h1 class="popup-h1">Preview Update v2.0</h1>
+  <br>
+    <p> * Mengubah Tampilan UI</p>
+    <p> * Menampilkan 1 huruf untuk memudahkan dalam bermain </p>
+    <p> * Mengubah beberapa kalimat</p>
+    <p> * Menambahkan fitur konfirmasi saat melakukan ganti/ulang soal</p>
+    <p> * Perbaikan pada kolom input</p>
+    <br>
+    <p>!! ENGLISH Version is delayed untill v3.0 or v4.0 !!</p>
+    <br>
+    <!-- <h1 class="popup-h1">Next Update v3.0</h1>
+    <br>
+    <p> * Menambah jumlah buah</p>
+    <p></p>
+    <br> -->
+    <!-- <a href="https://www.instagram.com/khelsii_/" target="_blank">lapor bug dm ig @khelsii_ (klik disini)</a> -->
+</div>
+
+
+<div class="resetAlert-container" id="resetAlert">
+  <h1 class="popup-h1">Apakah kamu yakin ingin <h1 class="popup-h1" style="color:red">GANTI/ULANG</h1> ??</h1>
+  <br>
+  <div class="resetAlert-button-container">
+    <button class="resetAlert-btn btn-batal" onclick="closeResetAlert()">BATAL</button>
+    <button class="resetAlert-btn btn-yakin" onclick="refreshButton()">YAKIN</button>
+  </div>
+</div>
+
+  <!-- Script Start -->
+    <script src="script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+      ></script>
+    <!-- Script End -->
+  </body>
+</html>
