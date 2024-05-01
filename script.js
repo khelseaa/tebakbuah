@@ -1,5 +1,5 @@
 // All the word to guess
-
+//test
 
 const words = [
   "apel",
