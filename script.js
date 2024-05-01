@@ -1,5 +1,4 @@
 // All the word to guess
-//aseppp
 
 const words = [
   "apel",
@@ -241,7 +240,6 @@ function guessLetter() {
 }
 
 function refreshButton() {
-  // location.reload();
   resetGame();
 }
 
